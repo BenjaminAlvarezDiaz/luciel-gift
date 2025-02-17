@@ -1,0 +1,220 @@
+
+.main_container {
+    height: 100vh;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 70px;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    z-index: 99;
+    
+}
+
+.navigation:hover {
+    opacity: 1;
+}
+  
+.navigation ul {
+    display: flex;
+    width: 350px;
+    gap: 20px;
+}
+  
+.navigation ul li {
+    width: 70px;
+    height: 70px;
+    background-color: var(--grey2);
+    border-radius: 50px;
+    z-index: 1;
+    list-style: none;
+    position: relative;
+}
+  
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--primary-l1);
+    transition: 0.5s;
+}
+
+.icon a {
+
+}
+
+.navigation ul li.active a .icon {
+  transform: translateY(0px);
+  color: var(primary-l1);
+}
+
+/*.iconPuzzle {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--primary-l1);
+    transition: 0.5s;
+}
+
+.icon {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--background-color);
+    transition: 0.5s;
+}*/
+
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(13px);
+}
+
+.indicator {
+    background: var(--primary);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 35%;
+    top: calc(-50% - 2px);
+    border-radius: 50%;
+    transition: 0.5s;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+  
+.indicator::before {
+    content: "";
+    position: absolute;
+    top: calc(50% + 1px);
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    left: -22px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px -10px 0 0 rgba(0, 0, 0, 0);
+    transition: 0.5s;
+}
+  
+.indicator::after {
+    content: "";
+    position: absolute;
+    top: calc(50% + 1px);
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    right: -22px;
+    border-top-left-radius: 20px;
+    box-shadow: 0px -10px 0 0 rgba(0, 0, 0, 0);
+    transition: 0.5s;
+}
+  
+.navigation ul li.active ~ .indicator {
+    transform: translateX(calc(70px * var(--active-index)));
+    /*background: linear-gradient(
+      90deg,
+      rgba(121, 61, 234, 0.8) 100%
+    );*/
+}
+  
+/*@keyframes brillo {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}*/
+
+/*.navigation ul li:nth-child(n).active ~ .indicator {
+    transform: scale(1) translateY(-40px);
+    background-color: var(--primary);
+}*/
+
+.navigation ul li:nth-child(n).active {
+    background-color: var(--primary);
+    animation: fillColor 0.8s forwards;
+}
+
+@keyframes fillColor {
+    0% {
+      background: radial-gradient(closest-side, var(--transparent) 100%, var(--primary) 100%);
+    }
+    100% {
+      background: radial-gradient(closest-side, var(--primary) 100%);
+      background-color: var(--primary);
+    }
+}
+
+.indicatorActive {
+    background: var(--primary);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 35%;
+    top: calc(-50% - 2px);
+    border-radius: 50%;
+    transition: 0.8s;
+}
+
+.indicatorInactive {
+    background: var(--primary);
+    transform: scale(0);
+    position: absolute;
+    left: 35%;
+    top: calc(-50% - 2px);
+    border-radius: 50%;
+    transition: 0.8s;
+}
+
+/*.navigation ul li:nth-child(1).active ~ .indicator {
+    transform: scale(1) translateY(-40px);
+    
+    background: var(--primary);
+}*/
+  
+/*.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: scale(1) translateY(-40px);
+    transform: translate(calc(90px * 1), -60px);
+    background: var(--primary);
+}*/
+
+/*.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: scale(1) translate(calc(90px * 2), -60px);
+    background: var(--primary);
+}*/
+
+.navigation ul li:nth-child(1).active ~ .indicatorPuzzle {
+    transform: scale(10) translateY(-40px);
+    background: var(--primary);
+}
+  
+@media screen and (max-width: 768px) {
+    .navigation {
+      width: 90%;
+    }
+}

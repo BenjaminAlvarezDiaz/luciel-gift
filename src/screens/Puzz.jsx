@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/Puzz.css";
+import styles from "../styles/Puzz.module.css";
 
 function Puzzle (){
     return (
-        <div className="puzzle-main-container">
+        <div className={styles.main_container}>
 
         </div>
     );
