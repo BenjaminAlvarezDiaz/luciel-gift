@@ -9,6 +9,11 @@ function Home (){
     return (
         <div className={styles.main_container}>
             <NavbarGifts />
+            <div className={styles.content}>
+                <div>
+                    
+                </div>
+            </div>
         </div>
     );
 }

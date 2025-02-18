@@ -11,14 +11,13 @@
     justify-content: center;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-55%);
     width: 300px;
     height: 70px;
     border-radius: 10px;
     opacity: 1;
     transition: opacity 0.3s;
-    z-index: 99;
-    
+    z-index: 99; 
 }
 
 .navigation:hover {
@@ -56,7 +55,7 @@
     display: block;
     font-size: 30px;
     line-height: 75px;
-    color: var(--primary-l1);
+    color: var(--primary);
     transition: 0.5s;
 }
 
@@ -66,19 +65,57 @@
 
 .navigation ul li.active a .icon {
   transform: translateY(0px);
-  color: var(primary-l1);
+  color: var(--primary-l1);
 }
 
-/*.iconPuzzle {
+/*@keyframes expandContract {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+.navigation ul li.active a .iconPuzzle {
+    animation: expandContract 1s ease-in-out;
+}
+
+.iconPuzzle {
     position: relative;
     display: block;
     font-size: 30px;
     line-height: 75px;
     color: var(--primary-l1);
     transition: 0.5s;
+}*/
+
+
+/*@keyframes swing {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
 }
 
-.icon {
+.navigation ul li.active a .iconLetter {
+    animation: swing 1s ease-in-out;
+}
+
+.iconLetter {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--primary-l1);
+    transition: 0.5s;
+}*/
+
+/*.icon {
     position: relative;
     display: block;
     font-size: 30px;
@@ -162,10 +199,10 @@
 
 @keyframes fillColor {
     0% {
-      background: radial-gradient(closest-side, var(--transparent) 100%, var(--primary) 100%);
+      background: radial-gradient(var(--transparent) 100%, var(--primary) 100%);
     }
     100% {
-      background: radial-gradient(closest-side, var(--primary) 100%);
+      background: radial-gradient(var(--primary) 100%);
       background-color: var(--primary);
     }
 }
@@ -215,6 +252,5 @@
   
 @media screen and (max-width: 768px) {
     .navigation {
-      width: 90%;
     }
 }
