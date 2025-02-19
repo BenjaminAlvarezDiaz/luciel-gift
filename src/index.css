@@ -8,7 +8,18 @@
     -webkit-text-size-adjust: 100%;
 }
 
+/* Para navegadores Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    display: none;
+}
+  
+/* Para Firefox */
+html {
+    scrollbar-width: none;
+}
+
 body {
+    -ms-overflow-style: none;
     margin: 0;
     min-width: 360px;
     min-height: 100vh;

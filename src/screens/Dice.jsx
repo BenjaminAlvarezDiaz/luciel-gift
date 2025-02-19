@@ -3,7 +3,7 @@ import styles from "../styles/Dice.module.css";
 
 function Dice (){
     return (
-        <div></div>
+        <div className={styles.main_container}></div>
     );
 }
 
