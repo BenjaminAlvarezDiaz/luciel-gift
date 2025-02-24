@@ -2,5 +2,5 @@
     margin: 0;
     height: 120vh;
     width: 100%;
-    background-color: red;
+    background-color: var(--background-color);
 }
