@@ -11,9 +11,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 function Puzzle (){
-
     const swiperRef = useRef(null);
     const [isTable, setIsTable] = useState(window.innerWidth < 1000);
+    const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
 
     const images = [
         "src/assets/1.png",
@@ -36,15 +36,21 @@ function Puzzle (){
             (<div className={styles.main_container}>
                 <Swiper
                     ref={swiperRef}
-                    modules={[Navigation, Pagination]}
-                    navigation
-                    pagination={{ clickable: true }}
+                    modules={[Navigation]}
+                    navigation={{
+                        nextEl: `.${styles.custom_next}`,
+                        prevEl: `.${styles.custom_prev}`,
+                    }}
                     spaceBetween={50}
                     slidesPerView={1}
-                    style={{ width: "300px", height: "340px" }}
+                    style={{ width: "320px", height: "360px" }}
+                    onSlideChange={(index) => {setCurrentIndexSwiper(index.activeIndex);}}
                 >
                 {images.map((image, index) => (
-                    <SwiperSlide key={index} style={{ display: "flex", justifyContent: "center" }}>
+                    <SwiperSlide
+                        key={index}
+                        style={{ display: "flex", justifyContent: "center" }}
+                    >
                         <div 
                             className={styles.puzzle_container} 
                             onMouseEnter={() => swiperRef.current.swiper.allowTouchMove = false}
@@ -60,11 +66,20 @@ function Puzzle (){
                     </SwiperSlide>
                 ))}
                 </Swiper>
+                <div className={styles.custom_swiper_buttons}>
+                    <div className={`${styles.custom_prev}`} 
+                        style={{ opacity: currentIndexSwiper === 0 ? 0.2 : 1 }}><ion-icon name="chevron-back-outline"></ion-icon>
+                    </div>
+                    <div className={`${styles.custom_next}`} 
+                        style={{ opacity: currentIndexSwiper === images.length - 1 ? 0.2 : 1 }}><ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
             </div>) 
             : 
             (<div className={styles.main_container}>
                 {images.map((image, index) => (
-                    <div 
+                    <div
+                        key={index}
                         className={styles.puzzle_container} 
                     >
                         <JigsawPuzzle 
