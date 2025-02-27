@@ -19,8 +19,8 @@ function Puzzle (){
 
     const images = [
         "src/assets/1.png",
-        "src/assets/2.jpg",
-        "src/assets/3.jpg" 
+        "src/assets/2.png",
+        "src/assets/3.png" 
     ];
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function Puzzle (){
                     }}
                     spaceBetween={50}
                     slidesPerView={1}
-                    style={{ width: "320px", height: "360px" }}
+                    style={{ width: "320px", height: "360px"}}
                     onSlideChange={(index) => {setCurrentIndexSwiper(index.activeIndex);}}
                 >
                 {images.map((image, index) => (
