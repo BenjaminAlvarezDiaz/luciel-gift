@@ -10,6 +10,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import SlidingDialog from "../components/SlidingDialog/SlidingDialog";
+
 function Puzzle (){
     const swiperRef = useRef(null);
     const [isTable, setIsTable] = useState(window.innerWidth < 1000);
@@ -74,6 +76,18 @@ function Puzzle (){
                         style={{ opacity: currentIndexSwiper === images.length - 1 ? 0.2 : 1 }}><ion-icon name="chevron-forward-outline"></ion-icon>
                     </div>
                 </div>
+                <div>
+                    <div>
+                        <div className={styles.gift}>
+                            <ion-icon name="gift"></ion-icon>
+                            <div className={styles.lock_closed_icon}>
+                                <ion-icon name="lock-closed"></ion-icon>
+                                0/3
+                            </div>
+                        </div>
+                    </div>
+                    <SlidingDialog message={"Abreme cuando termines los \nrompecabezas"} duration={4} />
+                </div>
             </div>) 
             : 
             (<div className={styles.main_container}>
@@ -91,6 +105,18 @@ function Puzzle (){
                     </div>
                 ))}
             </div>)}
+            <div>
+                <div>
+                    <div className={styles.gift}>
+                        <ion-icon name="gift"></ion-icon>
+                        <div className={styles.lock_closed_icon}>
+                            <ion-icon name="lock-closed"></ion-icon>
+                            0/3
+                        </div>
+                    </div>
+                </div>
+                <SlidingDialog message={"Abreme cuando termines los \nrompecabezas"} duration={4} />
+            </div>
         </div>
     );
 }
