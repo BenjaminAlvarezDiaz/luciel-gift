@@ -1,5 +1,7 @@
 
 :root {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
     color-scheme: light dark;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -26,6 +28,8 @@ body {
     max-height: auto;
     background-color: var(--background-color);
     overflow-x: hidden;
+    touch-action: none; /* Bloquea gestos táctiles en mobile */
+    overflow: hidden;
 }
 
 a {

@@ -1,7 +1,7 @@
 .animation_container {
     white-space: pre-line;
     text-align: left;
-    position: fixed;
+    position: absolute;
     bottom: 140px;
     right: 60px;
     background: var(--grey2);
@@ -9,8 +9,14 @@
     border-radius: 10px;
 }
 
-@media (max-width: 360px) {
+/*@media (max-height: 700px) {
     .animation_container {
         bottom: 150px;
+    }
+}*/
+
+@media (min-height: 700px) {
+    .animation_container {
+        bottom: 170px;
     }
 }

@@ -16,10 +16,58 @@
     background-color: var(--grey2);
     align-content: center;
     border-radius: 26px;
+    touch-action: none; /* Evita el scroll táctil */
+    overflow: hidden;
 }
 
 .puzzle {
     border-radius: 26px;
+}
+
+.tap_view_image {
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: var(--grey2);
+    color: var(--primary-l1);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.popup_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.popup_content {
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 80%;
+    text-align: center;
+}
+
+.popup_image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.close_button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: var(--primary-l1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .custom_swiper_buttons {
@@ -30,7 +78,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 40px;
-    top: 66%;
+    top: 72%;
     font-size: 32px;
 }
 
@@ -59,7 +107,7 @@
     justify-content: center;
     top: 75%;
     right: 10px;
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: row;
     z-index: 10
@@ -67,10 +115,10 @@
 
 .lock_closed_icon {
     color: var(--primary);
-    font-size: 15px;
-    position: fixed;
-    top: 80%;
-    right: 50px;
+    font-size: 18px;
+    position: absolute;
+    top: 60%;
+    right: 35px;
     display: flex;
     flex-direction: column;
 }
@@ -111,6 +159,20 @@
         flex-direction: column;
         height: 100%;
     }*/
+}
+
+@media (min-height: 700px) {
+    .custom_swiper_buttons {
+        top: 60%;
+    }
+
+    .gift {
+        font-size: 36px;
+    }
+
+    .lock_closed_icon {
+        font-size: 20px;
+    }
 }
 
 .puzzle_container_1 {
