@@ -62,12 +62,12 @@
 
 .close_button {
     margin-top: 10px;
-    padding: 5px 10px;
-    background: var(--primary-l1);
-    color: white;
+    color: var(--primary-l1);
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    position: absolute;
+    top: 0%;
+    font-size: 24px;
 }
 
 .custom_swiper_buttons {
@@ -123,6 +123,41 @@
     flex-direction: column;
 }
 
+
+
+.congratulationsPopup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 11;
+}
+
+.congratulationsPopupContent {
+    background: var(--transparent);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transform: scale(0);
+    animation: scaleIn 0.3s forwards;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media (max-width: 1000px) {
     /*.main_container_table {
         display: flex;
@@ -163,7 +198,7 @@
 
 @media (min-height: 700px) {
     .custom_swiper_buttons {
-        top: 60%;
+        top: 61%;
     }
 
     .gift {

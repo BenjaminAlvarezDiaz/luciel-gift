@@ -20,6 +20,11 @@ function Puzzle (){
     const [images, setImages] = useState([]);
     const [popupImage, setPopupImage] = useState(null);
 
+    const [puzzlesSolvedArray, setPuzzlesSolvedArray] = useState([false, false, false]);
+    const [puzzlesSolved, setPuzzlesSolved] = useState(0);
+
+    const [congratulationsPopup, setCongratulationsPopup] = useState(false);
+
     const [isTable, setIsTable] = useState(window.innerWidth < 1000);
     const [currentIndexSwiper, setCurrentIndexSwiper] = useState(0);
 
@@ -30,6 +35,25 @@ function Puzzle (){
     const closePopup = () => {
         setPopupImage(null);
     };
+
+    const puzzleCompleted = (index) => {
+        setTimeout(() => {
+            setPuzzlesSolvedArray((prev) => {
+                if (prev[index]) return prev;
+                
+                const updated = [...prev];
+                updated[index] = true;
+
+                setPuzzlesSolved((prev) => {
+                    const solvedCount = prev + 1;
+                    if(solvedCount === 3){
+                    }
+                    return solvedCount;
+               });
+               return updated;
+            });
+        }, 0);
+    }
 
     function getRandomNumbers() {
         const numbers = new Set();
@@ -78,7 +102,7 @@ function Puzzle (){
                     }}
                     spaceBetween={50}
                     slidesPerView={1}
-                    style={{ width: "320px", height: "360px", display: "flex", flexDirection: "column"}}
+                    style={{ width: "320px", height: "360px"}}
                     onSlideChange={(index) => {setCurrentIndexSwiper(index.activeIndex);}}
                 >
                 {images.map((image, index) => (
@@ -96,7 +120,7 @@ function Puzzle (){
                                 imageSrc={image}
                                 rows={4}
                                 columns={4}
-                                onSolved={() => alert(`¡Puzzle ${index + 1} completado!`)}
+                                onSolved={() => {puzzleCompleted(index); console.log(puzzlesSolved);}}
                             />
                         </div>
                     </SwiperSlide>
@@ -123,7 +147,7 @@ function Puzzle (){
                             exit={{ scale: 0 }} 
                             transition={{ duration: 0.3 }}
                         />
-                        <button className={styles.close_button} onClick={closePopup}>Cerrar</button>
+                        <span className={styles.close_button} onClick={closePopup}><ion-icon name="close"></ion-icon></span>
                     </motion.div>
                     </motion.div>
         )}
@@ -137,12 +161,16 @@ function Puzzle (){
                 </div>
                 <div>
                     <div>
-                        <div className={styles.gift}>
+                        <div className={styles.gift} onClick={() => puzzlesSolved === 3 && setCongratulationsPopup(true)}>
                             <ion-icon name="gift"></ion-icon>
-                            <div className={styles.lock_closed_icon}>
+                            <motion.div
+                                initial={{ scale: 1 }}
+                                animate={{ scale: puzzlesSolved ===3 ? 0 : 1 }}
+                                transition={{ duration: 1, ease: "easeInOut" }}
+                                className={styles.lock_closed_icon}>
                                 <ion-icon name="lock-closed"></ion-icon>
-                                0/3
-                            </div>
+                                {puzzlesSolved}/3
+                        </motion.div>
                         </div>
                     </div>
                     <SlidingDialog message={"Abreme cuando termines los \nrompecabezas"} duration={4} />
@@ -159,23 +187,37 @@ function Puzzle (){
                             imageSrc={image}
                             rows={4}
                             columns={4}
-                            onSolved={() => alert(`¡Puzzle ${index + 1} completado!`)}
+                            onSolved={() => {puzzleCompleted(index); console.log(puzzlesSolved);}}
                         />
                     </div>
                 ))}
-            </div>)}
+            </div>
+        )}
             <div>
                 <div>
-                    <div className={styles.gift}>
+                    <div className={styles.gift} onClick={() => puzzlesSolved === 3 && setCongratulationsPopup(true)}>
                         <ion-icon name="gift"></ion-icon>
-                        <div className={styles.lock_closed_icon}>
+                        <motion.div
+                            initial={{ scale: 1 }}
+                            animate={{ scale: puzzlesSolved ===3 ? 0 : 1 }}
+                            transition={{ duration: 1, ease: "easeInOut" }}
+                            className={styles.lock_closed_icon}>
                             <ion-icon name="lock-closed"></ion-icon>
-                            0/3
-                        </div>
+                            {puzzlesSolved}/3
+                        </motion.div>
                     </div>
                 </div>
                 <SlidingDialog message={"Abreme cuando termines los \nrompecabezas"} duration={4} />
             </div>
+            {congratulationsPopup && (
+                <div className={styles.congratulationsPopup}>
+                    <div className={styles.congratulationsPopupContent}>
+                        <h2>Felicidades!</h2>
+                        <h2>Terminaste los puzzles</h2>
+                        <button onClick={() => setCongratulationsPopup(false)}>Cerrar</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
