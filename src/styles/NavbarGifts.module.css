@@ -17,7 +17,7 @@
     border-radius: 10px;
     opacity: 1;
     transition: opacity 0.3s;
-    z-index: 99; 
+    z-index: 10; 
 }
 
 .navigation:hover {
