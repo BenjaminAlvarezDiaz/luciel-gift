@@ -11,17 +11,20 @@
 }
 
 .puzzle_container {
-    height: 340px;
+    height: 420px;
     width: 300px;
-    background-color: var(--grey2);
     align-content: center;
-    border-radius: 26px;
     touch-action: none; /* Evita el scroll táctil */
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .puzzle {
     border-radius: 26px;
+    background-color: var(--grey2);
+    height: 340px;
 }
 
 .tap_view_image {
@@ -50,7 +53,7 @@
     padding: 20px;
     border-radius: 10px;
     position: relative;
-    max-width: 80%;
+    max-width: 400px;
     text-align: center;
 }
 
@@ -123,8 +126,6 @@
     flex-direction: column;
 }
 
-
-
 .congratulationsPopup {
     position: absolute;
     top: 0;
@@ -141,6 +142,8 @@
 
 .congratulationsPopupContent {
     background: var(--transparent);
+    height: 200px;
+    width: 400px;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -183,6 +186,49 @@
         padding-top: 3em;
         background-color: var(--background-color);
     }
+
+    .tap_view_image {
+        padding: 5px 15px;
+        border-radius: 10px;
+        background-color: var(--grey2);
+        color: var(--primary-l1);
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .puzzle_container {
+        height: 340px;
+        background-color: var(--grey2);
+        border-radius: 26px;
+        gap: 0px;
+    }
+
+    .popup_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+    }
+
+    .popup_content {
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        max-width: 40%;
+        text-align: center;
+    }
+    
+    .popup_image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -194,6 +240,14 @@
         flex-direction: column;
         height: 100%;
     }*/
+
+    .popup_content {
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        max-width: 60%;
+        text-align: center;
+    }
 }
 
 @media (min-height: 700px) {
@@ -207,6 +261,18 @@
 
     .lock_closed_icon {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .popup_content {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 360px) {
+    .popup_content {
+        max-width: 80%;
     }
 }
 

@@ -13,6 +13,8 @@ import "swiper/css/pagination";
 
 import SlidingDialog from "../components/SlidingDialog/SlidingDialog";
 
+const jigsawGift = new Audio("src/assets/jigsawScreen/gift.ogg");
+
 function Puzzle (){
     const swiperRef = useRef(null);
     const puzzleRef = useRef(null);
@@ -35,6 +37,18 @@ function Puzzle (){
     const closePopup = () => {
         setPopupImage(null);
     };
+
+    const openGiftPopup = () => {
+        setCongratulationsPopup(true);
+    }
+
+    const closeCongratulationsPopup = () => {
+        jigsawGift.pause();
+        console.log("wazaaaaaaaaaaaa");
+        setCongratulationsPopup(false);
+        setPuzzlesSolved(0);
+        setPuzzlesSolvedArray([false, false, false]);
+    }
 
     const puzzleCompleted = (index) => {
         setTimeout(() => {
@@ -81,13 +95,20 @@ function Puzzle (){
     
         window.addEventListener("resize", resize);
         document.addEventListener("touchmove", handleTouchMove, { passive: false });
+        
+        if(congratulationsPopup){
+            jigsawGift.currentTime = 0;
+            jigsawGift.play();
+        } else {
+            jigsawGift.pause();
+        }
 
         return () => {
             window.removeEventListener("resize", resize);
             document.removeEventListener("touchmove", handleTouchMove);
             getRandomNumbers();
         };
-      }, []);
+      }, [congratulationsPopup]);
 
     return (
         <div>
@@ -161,7 +182,7 @@ function Puzzle (){
                 </div>
                 <div>
                     <div>
-                        <div className={styles.gift} onClick={() => puzzlesSolved === 3 && setCongratulationsPopup(true)}>
+                        <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openGiftPopup()}>
                             <ion-icon name="gift"></ion-icon>
                             <motion.div
                                 initial={{ scale: 1 }}
@@ -183,19 +204,46 @@ function Puzzle (){
                         key={index}
                         className={styles.puzzle_container} 
                     >
-                        <JigsawPuzzle 
-                            imageSrc={image}
-                            rows={4}
-                            columns={4}
-                            onSolved={() => {puzzleCompleted(index); console.log(puzzlesSolved);}}
-                        />
+                        <div className={styles.puzzle}>
+                            <JigsawPuzzle 
+                                imageSrc={image}
+                                rows={4}
+                                columns={4}
+                                onSolved={() => {puzzleCompleted(index); console.log(puzzlesSolved);}}
+                            />
+                        </div>
+                        <div 
+                            className={styles.tap_view_image} 
+                            onClick={() => openPopup(images[index])}
+                        >
+                            Toca para ver la imagen
+                        </div>
+                        {popupImage && (
+                            <motion.div 
+                                className={styles.popup_overlay} 
+                                onClick={closePopup}
+                            >
+                                <motion.div className={styles.popup_content} onClick={(e) => e.stopPropagation()}>
+                                    <motion.img 
+                                        src={popupImage} 
+                                        alt="Imagen completa"
+                                        className={styles.popup_image} 
+                                        initial={{ scale: 0 }} 
+                                        animate={{ scale: 1 }} 
+                                        exit={{ scale: 0 }} 
+                                        transition={{ duration: 0.3 }}
+                                    />
+                                <span className={styles.close_button} onClick={closePopup}><ion-icon name="close"></ion-icon></span>
+                                </motion.div>
+                            </motion.div>
+                        )}
                     </div>
                 ))}
             </div>
         )}
             <div>
                 <div>
-                    <div className={styles.gift} onClick={() => puzzlesSolved === 3 && setCongratulationsPopup(true)}>
+                    <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openGiftPopup()}>
                         <ion-icon name="gift"></ion-icon>
                         <motion.div
                             initial={{ scale: 1 }}
@@ -210,11 +258,11 @@ function Puzzle (){
                 <SlidingDialog message={"Abreme cuando termines los \nrompecabezas"} duration={4} />
             </div>
             {congratulationsPopup && (
-                <div className={styles.congratulationsPopup}>
-                    <div className={styles.congratulationsPopupContent}>
+                <div className={styles.congratulationsPopup} onClick={closeCongratulationsPopup}>
+                    <div className={styles.congratulationsPopupContent} onClick={(e) => e.stopPropagation()}>
                         <h2>Felicidades!</h2>
                         <h2>Terminaste los puzzles</h2>
-                        <button onClick={() => setCongratulationsPopup(false)}>Cerrar</button>
+                        <button onClick={closeCongratulationsPopup}>Cerrar</button>
                     </div>
                 </div>
             )}

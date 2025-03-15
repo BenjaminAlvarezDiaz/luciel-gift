@@ -7,11 +7,19 @@ function Letter (){
 
     const [popupLetter, setPopupLetter] = useState(null);
 
-    const openPopupLetter = (content) => {
+    const [popupLetterBirthday, setPopupLetterBirthday] = useState(false);
+    const birthdayAudio = new Audio("src/assets/letterScreen/happyBirthdayLuciel.ogg");
+
+    const openPopupLetter = (content, index) => {
+        if(index === 1){
+            setPopupLetterBirthday(true);
+        }
         setPopupLetter(content);
     }
 
     const closePopupLetter = () => {
+        setPopupLetterBirthday(false);
+        birthdayAudio.pause();
         setPopupLetter(null);
     }
 
@@ -64,7 +72,11 @@ function Letter (){
         },
         {
             condition: "Ábrela cuando sea tu cumpleaños",
-            content: "aaaaaaaa",
+            content: `¡FELIZ CUMpleaños!
+                    Espero que realmente la pases muy bien
+                    y sino, al menos espero la pases bien
+                    a la noche~ Te aprecio y si me necesitas
+                    seguro estaré por ahí`,
         },
         {
             condition: "Ábrela cuando estés muy aburrida",
@@ -103,7 +115,8 @@ function Letter (){
                     Si es así, felicidades, rompiste tu record
                     ¿Se siente bien aparecer de nuevo de forma misteriosa
                     y entre las sombras?
-                    Como sea, date prisa y ve a hablarme que seguro te extrañe`,
+                    Como sea, date prisa y ve a hablarme que seguro te extrañe
+                    tonota`,
         },
         {
             condition: "Ábrela cuando sientas que nada tiene sentido",
@@ -111,16 +124,18 @@ function Letter (){
                     esa es la clave
                     la capacidad de poder expresarnos a travez de palabras
                     es sorprendente ¿Verdad? Y tú lo haces muy bien, 
-                    se que te funcionara, ademas
-                    cuando me siento igual utilizo la escritura para desahogarme,
-                    si bien soy mediocre
-                    ayuda bastante a poner en blanco y negro lo que me atormenta,
+                    se que te funcionara. Cuando me siento igual
+                    utilizo la escritura para desahogarme,
+                    ayuda bastante a poner en blanco y negro lo que me atormenta y
                     si no funciona cuentame lo que te pasa en ingles
                     haré lo posible por entender y aconsejarte o distraerte`,
         },
         {
             condition: "Ábrela cuando te den ganas de ignorarme (otra vez)",
-            content: "aaaaaaa",
+            content: `¿Como te atreves? ¿Uh?
+                    Debería buscarte y ahorcarte hasta la muerte
+                    ¿Apostamos cuánto tiempo duras sin responderme esta vez?
+                    No insistire (demasiado), sabes donde encontrarme`,
         }
     ];
 
@@ -129,10 +144,16 @@ function Letter (){
                 setIsTable(window.innerWidth < 1000);
             };
             window.addEventListener("resize", resize);
+            if(popupLetterBirthday){
+                birthdayAudio.currentTime = 0;
+                birthdayAudio.play();
+            } else {
+                birthdayAudio.pause();
+            }
             return () => {
                 window.removeEventListener("resize", resize);
             }
-        }, []);
+        }, [popupLetterBirthday]);
     return (
         <div>
             {isTable?
@@ -140,7 +161,7 @@ function Letter (){
                 <div className={styles.letters_column}>
                     {lettersOfLove.map((item, index) => (
                         <div key={index} className={styles.letter_item}>
-                            <div onClick={() => openPopupLetter(item.content)} className={styles.letter_content}>
+                            <div onClick={() => openPopupLetter(item.content, index)} className={styles.letter_content}>
                                 <img src="src/assets/letterScreen/letter.png"></img>
                             </div>
                             <div className={styles.letter_condition}>
@@ -157,7 +178,7 @@ function Letter (){
                 <div className={styles.grid_letters}>
                 {lettersOfLove.map((item, index) => (
                     <div key={index} className={styles.letter_item}>
-                        <div onClick={() => openPopupLetter(item.content)} className={styles.letter_content}>
+                        <div onClick={() => openPopupLetter(item.content, index)} className={styles.letter_content}>
                             <img src="src/assets/letterScreen/letter.png" className={styles.letter_image}></img>
                         </div>
                         <div className={styles.letter_condition}>
