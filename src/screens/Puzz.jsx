@@ -71,14 +71,14 @@ function Puzzle (){
         }, 0);
     }
 
-    const imgImport = import.meta.glob('/src/assets/*.png'); 
+    const imgImport = import.meta.glob('/assets/*.png'); 
 
     function getRandomNumbers() {
         const numbers = new Set();
         while (numbers.size < 3) {
           numbers.add(Math.floor(Math.random() * 15) + 1);
         }
-        const imagePaths = [...numbers].map(i => `src/assets/${i}.png`);
+        const imagePaths = [...numbers].map(i => `/assets/${i}.png`);
         setImages(imagePaths);
 
     };
