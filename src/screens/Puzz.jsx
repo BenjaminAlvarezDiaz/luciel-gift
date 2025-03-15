@@ -71,7 +71,7 @@ function Puzzle (){
         }, 0);
     }
 
-    const imgImport = import.meta.glob('/1*.png'); 
+    const imgImport = import.meta.glob('/*.png'); 
 
     function getRandomNumbers() {
         const numbers = new Set();
