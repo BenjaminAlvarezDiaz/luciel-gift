@@ -1,0 +1,20 @@
+.puzzle {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rebeccapurple;
+}
+
+.letter {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: red;
+}
+
+.dice {
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: blue;
+}
