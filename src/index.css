@@ -10,6 +10,10 @@
     -webkit-text-size-adjust: 100%;
 }
 
+.jigsaw-puzzle__piece {
+    border: none !important;
+}
+
 /* Para navegadores Webkit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
     display: none;

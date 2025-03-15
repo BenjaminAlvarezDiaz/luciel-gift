@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Puzz.module.css";
+import "../styles/Puzz.module.css";
 import { motion } from "framer-motion";
+import jigsawGiftAudio from "../assets/jigsawScreen/gift.ogg";
 
 import {JigsawPuzzle} from "react-jigsaw-puzzle/lib";
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
@@ -13,7 +15,7 @@ import "swiper/css/pagination";
 
 import SlidingDialog from "../components/SlidingDialog/SlidingDialog";
 
-const jigsawGift = new Audio("src/assets/jigsawScreen/gift.ogg");
+const jigsawGift = new Audio(jigsawGiftAudio);
 
 function Puzzle (){
     const swiperRef = useRef(null);
@@ -38,16 +40,16 @@ function Puzzle (){
         setPopupImage(null);
     };
 
-    const openGiftPopup = () => {
+    const openCongratulationsPopup = () => {
         setCongratulationsPopup(true);
+        jigsawGift.currentTime = 0;
+        jigsawGift.play();
+        jigsawGift.volume = 1;
     }
 
     const closeCongratulationsPopup = () => {
         jigsawGift.pause();
-        console.log("wazaaaaaaaaaaaa");
         setCongratulationsPopup(false);
-        setPuzzlesSolved(0);
-        setPuzzlesSolvedArray([false, false, false]);
     }
 
     const puzzleCompleted = (index) => {
@@ -68,6 +70,8 @@ function Puzzle (){
             });
         }, 0);
     }
+
+    const imgImport = import.meta.glob('/src/assets/*.png'); 
 
     function getRandomNumbers() {
         const numbers = new Set();
@@ -108,7 +112,7 @@ function Puzzle (){
             document.removeEventListener("touchmove", handleTouchMove);
             getRandomNumbers();
         };
-      }, [congratulationsPopup]);
+      }, []);
 
     return (
         <div>
@@ -182,7 +186,7 @@ function Puzzle (){
                 </div>
                 <div>
                     <div>
-                        <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openGiftPopup()}>
+                        <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openCongratulationsPopup()}>
                             <ion-icon name="gift"></ion-icon>
                             <motion.div
                                 initial={{ scale: 1 }}
@@ -243,7 +247,7 @@ function Puzzle (){
         )}
             <div>
                 <div>
-                    <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openGiftPopup()}>
+                    <div className={styles.gift} onClick={() => puzzlesSolved === 3 && openCongratulationsPopup()}>
                         <ion-icon name="gift"></ion-icon>
                         <motion.div
                             initial={{ scale: 1 }}
@@ -260,9 +264,8 @@ function Puzzle (){
             {congratulationsPopup && (
                 <div className={styles.congratulationsPopup} onClick={closeCongratulationsPopup}>
                     <div className={styles.congratulationsPopupContent} onClick={(e) => e.stopPropagation()}>
-                        <h2>Felicidades!</h2>
-                        <h2>Terminaste los puzzles</h2>
-                        <button onClick={closeCongratulationsPopup}>Cerrar</button>
+                        <h2>¡Felicidades!</h2>
+                        <h2>Terminaste los puzzles, escucha un momento</h2>
                     </div>
                 </div>
             )}

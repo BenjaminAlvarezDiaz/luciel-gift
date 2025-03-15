@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Letter.module.css";
+import letterImage from "../assets/letterScreen/letter.png";
+import happyBirthdayAudio from "../assets/letterScreen/happyBirthdayLuciel.ogg";
+
 import { motion } from "framer-motion";
 
 function Letter (){
@@ -8,7 +11,7 @@ function Letter (){
     const [popupLetter, setPopupLetter] = useState(null);
 
     const [popupLetterBirthday, setPopupLetterBirthday] = useState(false);
-    const birthdayAudio = new Audio("src/assets/letterScreen/happyBirthdayLuciel.ogg");
+    const birthdayAudio = new Audio(happyBirthdayAudio);
 
     const openPopupLetter = (content, index) => {
         if(index === 1){
@@ -147,6 +150,7 @@ function Letter (){
             if(popupLetterBirthday){
                 birthdayAudio.currentTime = 0;
                 birthdayAudio.play();
+                birthdayAudio.volume = 1;
             } else {
                 birthdayAudio.pause();
             }
@@ -162,7 +166,7 @@ function Letter (){
                     {lettersOfLove.map((item, index) => (
                         <div key={index} className={styles.letter_item}>
                             <div onClick={() => openPopupLetter(item.content, index)} className={styles.letter_content}>
-                                <img src="src/assets/letterScreen/letter.png"></img>
+                                <img src={letterImage}></img>
                             </div>
                             <div className={styles.letter_condition}>
                                 <div className={styles.letter_circle}/>
@@ -179,7 +183,7 @@ function Letter (){
                 {lettersOfLove.map((item, index) => (
                     <div key={index} className={styles.letter_item}>
                         <div onClick={() => openPopupLetter(item.content, index)} className={styles.letter_content}>
-                            <img src="src/assets/letterScreen/letter.png" className={styles.letter_image}></img>
+                            <img src={letterImage} className={styles.letter_image}></img>
                         </div>
                         <div className={styles.letter_condition}>
                             <div className={styles.letter_circle}/>

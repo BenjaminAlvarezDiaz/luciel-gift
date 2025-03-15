@@ -27,6 +27,10 @@
     height: 340px;
 }
 
+.jigsaw-puzzle__piece {
+    border: none !important;
+}
+
 .tap_view_image {
     padding: 5px 15px;
     border-radius: 10px;
