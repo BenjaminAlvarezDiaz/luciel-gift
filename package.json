@@ -4,7 +4,6 @@
     "private": false,
     "version": "1.0.0",
     "type": "module",
-    "main": "index.js",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -15,18 +14,31 @@
     "author": "Me",
     "license": "ISC",
     "dependencies": {
+        "@react-three/drei": "9.122.0",
+        "@react-three/fiber": "8.15.12",
+        "@types/three": "0.174.0",
+        "@reduxjs/toolkit": "^2.5.1",
+        "framer-motion": "^12.4.7",
+        "ionicons": "^7.4.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.8.0",
+        "react-jigsaw-puzzle": "^1.0.5",
         "react-modal": "^3.16.1",
+        "react-redux": "^8.0.5",
+        "react-router": "^6.8.2",
         "react-router-dom": "^6.11.1",
         "react-scroll": "^1.8.9",
-        "react-slick": "^0.29.0"
+        "react-slick": "^0.29.0",
+        "redux": "^4.2.1",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-thunk": "^2.4.2",
+        "swiper": "^11.2.4"
     },
     "devDependencies": {
         "@types/react": "^18.0.28",
         "@types/react-dom": "^18.0.11",
-        "@vitejs/plugin-react": "^4.0.0",
-        "vite": "^4.3.2"
+        "@vitejs/plugin-react": "^4.3.4",
+        "vite": "^6.1.1"
     }
 }
