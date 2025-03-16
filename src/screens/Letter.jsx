@@ -176,6 +176,20 @@ function Letter (){
                         </div>
                     ))}
                 </div>
+                {popupLetter && (
+                    <motion.div className={styles.popup_overlay} onClick={closePopupLetter}>
+                        <motion.div 
+                            className={styles.popup_content} 
+                            onClick={(e) => e.stopPropagation()}
+                            initial={{ scale: 0 }} 
+                            animate={{ scale: 1 }} 
+                            exit={{ scale: 0 }} 
+                            transition={{ duration: 0.3 }}
+                        >
+                            <p>{popupLetter}</p>
+                    </motion.div>
+                </motion.div>
+            )}
             </div>)
             :
             (<div className={styles.main_container}>
@@ -193,9 +207,7 @@ function Letter (){
                     </div>
                 ))}
                 </div>
-            </div>)
-            }
-            {popupLetter && (
+                {popupLetter && (
                     <motion.div className={styles.popup_overlay} onClick={closePopupLetter}>
                         <motion.div 
                             className={styles.popup_content} 
@@ -209,6 +221,8 @@ function Letter (){
                     </motion.div>
                 </motion.div>
             )}
+            </div>)
+            }
         </div>
     );
 }

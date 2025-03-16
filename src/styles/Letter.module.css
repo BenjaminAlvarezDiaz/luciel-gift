@@ -18,8 +18,6 @@
 .popup_overlay {
     position: absolute;
     padding-top: 60px;
-    top: 820px;
-    left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
@@ -29,7 +27,7 @@
     z-index: 11;
     overflow: scroll;
     overflow-x: scroll;
-    touch-action: auto; /* Bloquea gestos táctiles en mobile */
+    touch-action: auto;
 }
 
 .popup_content {
@@ -176,7 +174,6 @@
 
 @media (max-width: 768px) {
     .popup_overlay {
-        top: 700px;
     }
 
     .letter_item {
@@ -262,7 +259,6 @@
 
 @media (min-height: 740px) and (max-width: 360px){
     .popup_overlay {
-        top: 820px;
     }
     .popup_content {
         max-height: 74vh;
