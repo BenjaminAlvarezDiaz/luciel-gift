@@ -173,14 +173,16 @@
     }
 
     .popup_overlay {
-        margin-top: 0px;
+        margin-top: 20%;
         top: auto;
         bottom: auto;
+        align-self: center;
     }
 }
 
 @media (max-width: 768px) {
     .popup_overlay {
+        margin-top: 80px;
     }
 
     .letter_item {
@@ -265,8 +267,10 @@
 }
 
 @media (min-height: 740px) and (max-width: 360px){
+
     .popup_overlay {
     }
+
     .popup_content {
         max-height: 74vh;
     }

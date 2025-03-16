@@ -4,6 +4,7 @@ import letterImage from "../assets/letterScreen/letter.png";
 import happyBirthdayAudio from "../assets/letterScreen/happyBirthdayLuciel.ogg";
 
 import { motion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 function Letter (){
     const [isTable, setIsTable] = useState(window.innerWidth < 1000);
@@ -176,7 +177,7 @@ function Letter (){
                         </div>
                     ))}
                 </div>
-                {popupLetter && (
+                {popupLetter && createPortal(
                     <motion.div className={styles.popup_overlay} onClick={closePopupLetter}>
                         <motion.div 
                             className={styles.popup_content} 
@@ -188,7 +189,8 @@ function Letter (){
                         >
                             <p>{popupLetter}</p>
                     </motion.div>
-                </motion.div>
+                </motion.div>,
+                document.body
             )}
             </div>)
             :
@@ -207,7 +209,7 @@ function Letter (){
                     </div>
                 ))}
                 </div>
-                {popupLetter && (
+                {popupLetter && createPortal(
                     <motion.div className={styles.popup_overlay} onClick={closePopupLetter}>
                         <motion.div 
                             className={styles.popup_content} 
@@ -219,7 +221,8 @@ function Letter (){
                         >
                             <p>{popupLetter}</p>
                     </motion.div>
-                </motion.div>
+                </motion.div>,
+                document.body
             )}
             </div>)
             }
