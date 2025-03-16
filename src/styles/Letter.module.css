@@ -11,6 +11,8 @@
     gap: 30px;
     display: grid;
     grid-template-columns: repeat(3, 18rem);
+    justify-content: center;
+    justify-items: center;
 }
 
 .popup_overlay {

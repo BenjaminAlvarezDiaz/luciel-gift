@@ -11,6 +11,12 @@ function NavbarGifts (){
     };
 
     useEffect(() => {
+
+        if(location.hash !== ""){
+            setActiveItem(location.hash);
+        } else if (location.pathname === "/"){
+            setActiveItem("#puzzle");
+        }
         
         return () => {
             if(location.hash !== ""){

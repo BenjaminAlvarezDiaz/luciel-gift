@@ -71,14 +71,14 @@ function Puzzle (){
         }, 0);
     }
 
-    const imgImport = import.meta.glob('/src/assets/*.png'); 
+    const imgImport = import.meta.glob('/*.png'); 
 
     function getRandomNumbers() {
         const numbers = new Set();
         while (numbers.size < 3) {
           numbers.add(Math.floor(Math.random() * 15) + 1);
         }
-        const imagePaths = [...numbers].map(i => `src/assets/${i}.png`);
+        const imagePaths = [...numbers].map(i => `/${i}.png`);
         setImages(imagePaths);
 
     };
@@ -99,6 +99,7 @@ function Puzzle (){
     
         window.addEventListener("resize", resize);
         document.addEventListener("touchmove", handleTouchMove, { passive: false });
+        getRandomNumbers();
         
         if(congratulationsPopup){
             jigsawGift.currentTime = 0;
