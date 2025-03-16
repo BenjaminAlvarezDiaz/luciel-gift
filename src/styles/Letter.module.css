@@ -17,9 +17,8 @@
 
 .popup_overlay {
     position: absolute;
+    top: 134%;
     padding-top: 60px;
-    top: 820px;
-    left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
@@ -29,14 +28,14 @@
     z-index: 11;
     overflow: scroll;
     overflow-x: scroll;
-    touch-action: auto; /* Bloquea gestos táctiles en mobile */
+    touch-action: auto;
 }
 
 .popup_content {
     max-height: 80vh;
     padding: 20px;
-    margin-top: 80px;
-    margin-bottom: 180px;
+    margin-top: 120px;
+    margin-bottom: 280px;
     border-radius: 10px;
     position: absolute;
     max-width: 80%;
@@ -172,11 +171,22 @@
         height: 10px;
         width: 10%;
     }
+
+    .popup_overlay {
+        margin-top: 20%;
+        top: auto;
+        bottom: auto;
+        align-self: center;
+    }
 }
 
 @media (max-width: 768px) {
     .popup_overlay {
-        top: 700px;
+        margin-top: 80px;
+    }
+
+    .letters_column {
+        padding-bottom: 340px;
     }
 
     .letter_item {
@@ -261,9 +271,10 @@
 }
 
 @media (min-height: 740px) and (max-width: 360px){
+
     .popup_overlay {
-        top: 820px;
     }
+
     .popup_content {
         max-height: 74vh;
     }
