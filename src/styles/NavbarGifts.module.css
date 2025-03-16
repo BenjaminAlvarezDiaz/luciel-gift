@@ -51,13 +51,20 @@
     outline-color: transparent;
     outline: none;
     color: inherit;
+    -webkit-tap-higlight-color: transparent;
 }
 
-.navigation a, a:focus, a:hover, a:active {
+.navigation a, a:focus, a:hover, a:active, a:-webkit-any-link {
     outline: none;
     outline-color: transparent;
     box-shadow: none;
-    text-decoration:none; 
+    text-decoration: none; 
+    background-color: none;
+    background: none !important;
+    user-select: none;
+    -webkit-tap-higlight-color: transparent;
+    color: transparent;
+    touch-action: manipulation;
 }
 
 .navigation ul li a .icon {
@@ -77,62 +84,6 @@
   transform: translateY(0px);
   color: var(--primary-l1);
 }
-
-/*@keyframes expandContract {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-}
-
-.navigation ul li.active a .iconPuzzle {
-    animation: expandContract 1s ease-in-out;
-}
-
-.iconPuzzle {
-    position: relative;
-    display: block;
-    font-size: 30px;
-    line-height: 75px;
-    color: var(--primary-l1);
-    transition: 0.5s;
-}*/
-
-
-/*@keyframes swing {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
-    50% { transform: rotate(-15deg); }
-    75% { transform: rotate(5deg); }
-    100% { transform: rotate(0deg); }
-}
-
-.navigation ul li.active a .iconLetter {
-    animation: swing 1s ease-in-out;
-}
-
-.iconLetter {
-    position: relative;
-    display: block;
-    font-size: 30px;
-    line-height: 75px;
-    color: var(--primary-l1);
-    transition: 0.5s;
-}*/
-
-/*.icon {
-    position: relative;
-    display: block;
-    font-size: 30px;
-    line-height: 75px;
-    color: var(--background-color);
-    transition: 0.5s;
-}*/
 
 .navigation ul li.active a .text {
     opacity: 1;
@@ -264,3 +215,59 @@
     .navigation {
     }
 }
+
+/*@keyframes expandContract {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+.navigation ul li.active a .iconPuzzle {
+    animation: expandContract 1s ease-in-out;
+}
+
+.iconPuzzle {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--primary-l1);
+    transition: 0.5s;
+}*/
+
+
+/*@keyframes swing {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.navigation ul li.active a .iconLetter {
+    animation: swing 1s ease-in-out;
+}
+
+.iconLetter {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--primary-l1);
+    transition: 0.5s;
+}*/
+
+/*.icon {
+    position: relative;
+    display: block;
+    font-size: 30px;
+    line-height: 75px;
+    color: var(--background-color);
+    transition: 0.5s;
+}*/
