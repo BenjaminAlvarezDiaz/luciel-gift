@@ -99,6 +99,7 @@ function Puzzle (){
     
         window.addEventListener("resize", resize);
         document.addEventListener("touchmove", handleTouchMove, { passive: false });
+        getRandomNumbers();
         
         if(congratulationsPopup){
             jigsawGift.currentTime = 0;
