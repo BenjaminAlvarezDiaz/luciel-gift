@@ -54,7 +54,7 @@
     -webkit-tap-higlight-color: transparent;
 }
 
-.navigation a, a:focus, a:hover, a:active, a:-webkit-any-link {
+.navigation a, a:focus, a:hover, a:active, a:-webkit-any-link, a::selection {
     outline: none;
     outline-color: transparent;
     box-shadow: none;
@@ -65,6 +65,10 @@
     -webkit-tap-higlight-color: transparent;
     color: transparent;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    user-select: none;
 }
 
 .navigation ul li a .icon {
