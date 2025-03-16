@@ -185,6 +185,10 @@
         margin-top: 80px;
     }
 
+    .letters_column {
+        padding-bottom: 320px;
+    }
+
     .letter_item {
         height: 400px;
         width: 320px;
