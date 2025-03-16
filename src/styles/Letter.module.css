@@ -17,6 +17,7 @@
 
 .popup_overlay {
     position: absolute;
+    top: 134%;
     padding-top: 60px;
     width: 100vw;
     height: 100vh;
@@ -33,7 +34,7 @@
 .popup_content {
     max-height: 80vh;
     padding: 20px;
-    margin-top: 80px;
+    margin-top: 120px;
     margin-bottom: 280px;
     border-radius: 10px;
     position: absolute;
@@ -169,6 +170,12 @@
     .letter_image {
         height: 10px;
         width: 10%;
+    }
+
+    .popup_overlay {
+        margin-top: 0px;
+        top: auto;
+        bottom: auto;
     }
 }
 
