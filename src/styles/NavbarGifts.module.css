@@ -48,12 +48,16 @@
     align-items: center;
     font-weight: 500;
     text-decoration: none;
+    outline-color: transparent;
     outline: none;
+    color: inherit;
 }
 
-.navigation ul li a:focus {
+.navigation a, a:focus, a:hover, a:active {
     outline: none;
+    outline-color: transparent;
     box-shadow: none;
+    text-decoration:none; 
 }
 
 .navigation ul li a .icon {
