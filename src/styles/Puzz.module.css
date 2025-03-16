@@ -80,12 +80,11 @@
 .custom_swiper_buttons {
     background-color: var(--transparent);
     color: var(--primary);
-    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 15px;
     gap: 40px;
-    top: 72%;
     font-size: 32px;
 }
 
